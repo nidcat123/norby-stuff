@@ -1,0 +1,143 @@
+meta:
+  id: norby_binary
+  title: Norby Binary File
+  endian: little
+  file-extension: norby
+
+seq:
+  - id: header
+    type: header_struct
+
+  - id: payload
+    type: tmi0_struct
+
+header_struct:
+  seq:
+    - id: length
+      type: u8
+    - id: receiver_address
+      type: u32
+    - id: transmitter_address
+      type: u32
+    - id: transaction_number
+      type: u16
+    - id: reserved
+      type: u8
+      count: 2
+    - id: msg_type_id
+      type: s16
+
+tmi0_struct:
+  seq:
+    - id: frame_start_mark
+      type: u8
+      count: 2
+    - id: frame_definition
+      type: u16
+    - id: frame_number
+      type: u16
+    - id: frame_generation_time
+      type: u32
+    - id: brk_title
+      type: string
+      size: 24
+    - id: brk_number_active
+      type: u8
+    - id: brk_restarts_count_active
+      type: s32
+    - id: brk_current_mode_id
+      type: u8
+    - id: brk_transmitter_power_active
+      type: s8
+    - id: brk_temp_active
+      type: s8
+    - id: brk_module_state_active
+      type: u8
+      count: 2
+    - id: brk_voltage_offset_amplifier_active
+      type: u16
+    - id: brk_last_received_packet_rssi_active
+      type: s8
+    - id: brk_last_received_packet_snr_active
+      type: s8
+    - id: brk_archive_record_pointer
+      type: u16
+    - id: brk_last_received_packet_snr_inactive
+      type: s8
+    - id: ms_module_state
+      type: u8
+      count: 2
+    - id: ms_payload_state
+      type: u8
+      count: 2
+    - id: ms_temp
+      type: s8
+    - id: ms_pn_supply_state
+      type: u8
+    - id: sop_altitude_glonass
+      type: s32
+    - id: sop_latitude_glonass
+      type: s32
+    - id: sop_longitude_glonass
+      type: s32
+    - id: sop_date_time_glonass
+      type: u32
+    - id: sop_magnetic_induction_module
+      type: u16
+    - id: sop_angular_velocity_vector
+      type: u8
+      count: 6
+    - id: sop_angle_priority1
+      type: u16
+    - id: sop_angle_priority2
+      type: u16
+    - id: sop_mk_temp_dsg1
+      type: s8
+    - id: sop_mk_temp_dsg6
+      type: s8
+    - id: sop_board_temp
+      type: s8
+    - id: sop_state
+      type: u8
+      count: 2
+    - id: sop_state_dsg
+      type: u8
+      count: 6
+    - id: sop_orientation_number
+      type: u8
+    - id: ses_median_panel_x_temp_positive
+      type: s8
+    - id: ses_median_panel_x_temp_negative
+      type: s8
+    - id: ses_solar_panels_state
+      type: u8
+      count: 5
+    - id: ses_charge_level_m_ah
+      type: u16
+    - id: ses_battery_state
+      type: u8
+      count: 3
+    - id: ses_charging_keys_state
+      type: u8
+      count: 2
+    - id: ses_power_line_state
+      type: u8
+    - id: ses_total_charging_power
+      type: s16
+    - id: ses_total_generated_power
+      type: u16
+    - id: ses_total_power_load
+      type: u16
+    - id: ses_median_pmm_temp
+      type: s8
+    - id: ses_median_pam_temp
+      type: s8
+    - id: ses_median_pdm_temp
+      type: s8
+    - id: ses_module_state
+      type: u8
+      count: 3
+    - id: ses_voltage
+      type: u16
+    - id: crc16
+      type: u16
